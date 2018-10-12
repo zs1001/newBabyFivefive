@@ -1,4 +1,4 @@
-package com.dooshen.newbabyfivefive.common;
+package com.dooshen.newbabyfivefive.common.util;
 import java.io.File;
 
 import java.io.IOException;
