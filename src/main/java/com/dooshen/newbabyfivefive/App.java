@@ -21,10 +21,10 @@ public class App
     {
     	//http://f.apiplus.net/cqssc-20.xml
     	
-    	String url= "http://f.apiplus.net/cqssc-1.json";
-    	String kj = "{\"code\":\"cqssc\",\"data\":[{\"expect\":\"20181011054\",\"opencode\":\"5,7,2,8,3\",\"opentimestamp\":1539241240,\"opentime\":\"2018-10-11 15:00:40\"}],\"rows\":1,\"info\":\"免费接口随机延迟3-6分钟，实时接口请访问www.opencai.net查询、购买或续费\"}";
+    	String url= "http://f.apiplus.net/cqssc-20.json";
+//    	String kj = "{\"code\":\"cqssc\",\"data\":[{\"expect\":\"20181011054\",\"opencode\":\"5,7,2,8,3\",\"opentimestamp\":1539241240,\"opentime\":\"2018-10-11 15:00:40\"}],\"rows\":1,\"info\":\"免费接口随机延迟3-6分钟，实时接口请访问www.opencai.net查询、购买或续费\"}";
     	//http请求获取开奖
-//    	String kj = HttpClientUtils.sendHttpGet(url);
+    	String kj = HttpClientUtils.sendHttpGet(url);
     	System.out.println(kj);
     	JSON json = JSONObject.parseObject(kj);
     	System.out.println(json);
@@ -40,15 +40,15 @@ public class App
 		List<Map<String, Object>>  ss = JSONUtils.getJsonToListMap(date1);
 		int ss1= ss.size()-1;
 		int[] last  = new int[20];
-		for (int i = 0; i < ss.size(); i++) {
-				System.out.println(ss.get(i).get("opencode"));
+		for (int i = ss1; i > -1; i--) {
+				System.out.println(ss.get(i).get("opencode")+"------>"+ss.get(i).get("opentime"));
 				String opencode1 = (String) ss.get(i).get("opencode");
 				String foo =  opencode1.substring(opencode1.length()-1,opencode1.length());
-				System.out.println(foo);
-				System.out.println("last"+Integer.parseInt(foo));
+//				System.out.println(foo);
+//				System.out.println("last"+Integer.parseInt(foo));
 				last[ss1]=Integer.parseInt(foo);
 				ss1--;
-				System.out.println("ss1-->"+ss1);
+				System.out.println("-----------------ss1-->"+ss1);
 		}
 
 		
